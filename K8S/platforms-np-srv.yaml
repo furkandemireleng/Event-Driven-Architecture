@@ -1,0 +1,23 @@
+#platforms node port service 
+apiVersion: v1
+kind: Service
+metadata:
+  name: platfromnpservice-srv
+spec:
+  type: NodePort
+  selector:
+    app: platformservice
+  ports:
+    - name: platformservice
+      protocol: TCP
+      port: 80       # External port
+      targetPort: 8080  # Internal port of the container
+
+
+# after all deploy the platform node port
+# kubectl apply -f platforms-np-srv.yaml
+# SAYS service/platfromnpservice-srv created
+
+# kubectl get services  diyerek kontrol edebilirsin
+#  platfromnpservice-srv   NodePort    10.107.185.123   <none>        80:31091/TCP   2s
+# istekler bu porttan yapilmali
